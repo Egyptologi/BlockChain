@@ -34,11 +34,11 @@ public class BlockChainServise
         var lastBlock = Chain.Last();
         var newBlock = new Block(lastBlock.Index + 1, author, DateTime.UtcNow, data, lastBlock.Hash);
         _miningService.MineBlock(newBlock, Difficulty);
+        Chain.Add(newBlock);
         if (newBlock.Index % _difficultyAdjustmentInterval == 0)
         {
             AdjustDifficulty();
         }
-        Chain.Add(newBlock);
     }
 
     private void AdjustDifficulty()
@@ -53,7 +53,7 @@ public class BlockChainServise
             {
                 return;
             }
-            if (_targetBlockTimeSeconds / avarageMiningTime >= 5)
+            if (_targetBlockTimeSeconds / avarageMiningTime >= 5 && Difficulty < 5)
             {
                 Difficulty += 2;
                 Console.WriteLine("Incrementing difficulty + 2");
@@ -70,7 +70,7 @@ public class BlockChainServise
             }
             else
             {
-                if (avarageMiningTime >= 5 * _targetBlockTimeSeconds)
+                if (avarageMiningTime >= 5 * _targetBlockTimeSeconds && Difficulty > 2)
                 {
                     Difficulty -= 2;
                     Console.WriteLine("Decrementing difficulty - 2");
@@ -98,7 +98,7 @@ public class BlockChainServise
                 return false;
             }
             
-            if (!currentBlock.Hash.StartsWith(new String('0', Difficulty)))
+            if (!currentBlock.Hash.StartsWith(new String('0', currentBlock.DifficultyAtMining)))
             {
                 return false;
             }
