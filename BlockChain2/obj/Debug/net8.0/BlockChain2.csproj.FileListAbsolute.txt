@@ -1,0 +1,14 @@
+/home/egyptology/RiderProjects/BlockChain2/BlockChain2/bin/Debug/net8.0/BlockChain2
+/home/egyptology/RiderProjects/BlockChain2/BlockChain2/bin/Debug/net8.0/BlockChain2.deps.json
+/home/egyptology/RiderProjects/BlockChain2/BlockChain2/bin/Debug/net8.0/BlockChain2.runtimeconfig.json
+/home/egyptology/RiderProjects/BlockChain2/BlockChain2/bin/Debug/net8.0/BlockChain2.dll
+/home/egyptology/RiderProjects/BlockChain2/BlockChain2/bin/Debug/net8.0/BlockChain2.pdb
+/home/egyptology/RiderProjects/BlockChain2/BlockChain2/obj/Debug/net8.0/BlockChain2.GeneratedMSBuildEditorConfig.editorconfig
+/home/egyptology/RiderProjects/BlockChain2/BlockChain2/obj/Debug/net8.0/BlockChain2.AssemblyInfoInputs.cache
+/home/egyptology/RiderProjects/BlockChain2/BlockChain2/obj/Debug/net8.0/BlockChain2.AssemblyInfo.cs
+/home/egyptology/RiderProjects/BlockChain2/BlockChain2/obj/Debug/net8.0/BlockChain2.csproj.CoreCompileInputs.cache
+/home/egyptology/RiderProjects/BlockChain2/BlockChain2/obj/Debug/net8.0/BlockChain2.dll
+/home/egyptology/RiderProjects/BlockChain2/BlockChain2/obj/Debug/net8.0/refint/BlockChain2.dll
+/home/egyptology/RiderProjects/BlockChain2/BlockChain2/obj/Debug/net8.0/BlockChain2.pdb
+/home/egyptology/RiderProjects/BlockChain2/BlockChain2/obj/Debug/net8.0/BlockChain2.genruntimeconfig.cache
+/home/egyptology/RiderProjects/BlockChain2/BlockChain2/obj/Debug/net8.0/ref/BlockChain2.dll
