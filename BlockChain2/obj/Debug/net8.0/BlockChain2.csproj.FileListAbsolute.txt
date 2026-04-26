@@ -12,3 +12,4 @@
 /home/egyptology/RiderProjects/BlockChain2/BlockChain2/obj/Debug/net8.0/BlockChain2.pdb
 /home/egyptology/RiderProjects/BlockChain2/BlockChain2/obj/Debug/net8.0/BlockChain2.genruntimeconfig.cache
 /home/egyptology/RiderProjects/BlockChain2/BlockChain2/obj/Debug/net8.0/ref/BlockChain2.dll
+/home/egyptology/RiderProjects/BlockChain2/BlockChain2/obj/Debug/net8.0/BlockChain2.sourcelink.json
