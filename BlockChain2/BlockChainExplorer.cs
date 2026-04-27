@@ -61,4 +61,20 @@ public class BlockChainExplorer
         
         return list;
     }
+
+    public (Block? block, Transaction? tx) FindTransactionLocation(string txId)
+    {
+        foreach (var block in _chain)
+        {
+            foreach (var tx in block.Transactions)
+            {
+                if (tx.Id.CompareTo(txId) == 0)
+                {
+                    return (block, tx);
+                }
+            }
+        }
+        
+        return (null, null);
+    }
 }

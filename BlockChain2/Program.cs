@@ -5,7 +5,6 @@ using BlockChain2;
 var displayServise = new DisplayService();
 var blockChainService = new BlockChainServise();
 
-blockChainService.AddBlock(new List<Transaction>());
 blockChainService.AddBlock(new List<Transaction> {TransactionServise.CreateTransaction("A", "B", 10.0M)});
 blockChainService.AddBlock(new List<Transaction> {TransactionServise.CreateTransaction("B", "A", 20.0M)});
 blockChainService.AddBlock(new List<Transaction> {TransactionServise.CreateTransaction("B", "C", 10.0M), TransactionServise.CreateTransaction("C", "B", 10.0M)});
@@ -18,4 +17,14 @@ Console.WriteLine($"Largest transaction: {blockChainExplorer.GetLargestTransacti
 foreach (var his in blockChainExplorer.GetAddressHistory("A"))
 {
     Console.WriteLine($"Address: {his.ToString()}");
+}
+
+var findTransaction = blockChainExplorer.FindTransactionLocation(Console.ReadLine());
+if (findTransaction.tx == null)
+{
+    Console.WriteLine("No transaction found");
+}
+else
+{
+    Console.WriteLine($"Found transaction: {findTransaction.tx.ToString()} in block {findTransaction.block.Index}");
 }
