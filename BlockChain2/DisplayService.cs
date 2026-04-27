@@ -7,10 +7,12 @@ public class DisplayService
         foreach (var block in blocks)
         {
             Console.WriteLine($"Index: {block.Index}");
-            Console.WriteLine($"Author: {block.Author}");
             Console.WriteLine($"Hash: {block.Hash}");
             Console.WriteLine($"Previous Hash: {block.PreviousHash}");
-            Console.WriteLine($"Data: {block.Data}");
+            foreach (var transaction in block.Transactions)
+            {
+                Console.WriteLine($"Transaction: {transaction.ToString()}");
+            }
             Console.WriteLine($"TimeStamp: {block.TimeStamp}");
             Console.WriteLine($"Difficulty at mining: {block.DifficultyAtMining}");
             Console.WriteLine(new String('-', 50));

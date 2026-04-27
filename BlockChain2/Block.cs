@@ -7,13 +7,11 @@ public class Block
     
     public DateTime TimeStamp { get; set; }
     
-    public string Data { get; set; }
+    public List<Transaction> Transactions { get; set; }
     
     public string Hash { get; set; }
     
     public string PreviousHash { get; set; }
-    
-    public string Author { get; set; }
     
     public long Nonce { get; set; } // for count of attempts 
 
@@ -21,18 +19,15 @@ public class Block
     
     public int DifficultyAtMining {get; set;}
 
-    public Block(int index, string author, DateTime timeStamp, string data, string previousHash)
+    public Block(int index, List<Transaction> data, DateTime timeStamp, string previousHash)
     {
         Index = index;
-        Author = author;
         TimeStamp = timeStamp;
-        Data = data;
+        Transactions = data;
         Hash = "";
         PreviousHash = previousHash;
         Nonce = 0;
         MiningDurationTime = 0;
         
     }
-    
-    public Block() {}
 }

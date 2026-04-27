@@ -24,15 +24,25 @@ public class BlockChainServise
 
     private void AddGenesisBlock()
     {
-        Block block = new Block(0, "Name", DateTime.Parse("2024-06-01T00:00:00.000Z"), "Genesis block", "0");
+        Block block = new Block(0,new List<Transaction>(), DateTime.Parse("2024-06-01T00:00:00.000Z"), "0");
         block.Hash = _hashingService.ComputeHash(block);
         Chain.Add(block);
     }
 
-    public void AddBlock(string author, string data)
+    public void AddBlock(List<Transaction> data)
     {
+        foreach (var tx in data)
+        {
+            var isValid = TransactionServise.ValidateTransaction(tx);
+            if (!isValid.isValid)
+            {
+                Console.WriteLine($"Invalide transaction: {isValid.error}");
+                return;
+            }
+        }
         var lastBlock = Chain.Last();
-        var newBlock = new Block(lastBlock.Index + 1, author, DateTime.UtcNow, data, lastBlock.Hash);
+        var newBlock = new Block(lastBlock.Index, data, DateTime.UtcNow, lastBlock.PreviousHash);
+        
         _miningService.MineBlock(newBlock, Difficulty);
         Chain.Add(newBlock);
         if (newBlock.Index % _difficultyAdjustmentInterval == 0)
