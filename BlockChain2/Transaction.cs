@@ -9,6 +9,8 @@ public class Transaction
     
     public decimal Amount { get; set; }
     
+    public byte[] Signature { get; set; }
+    
     public DateTime Timestamp { get; set; }
 
     public Transaction(string from, string to, decimal amount)
@@ -27,6 +29,6 @@ public class Transaction
 
     public override string ToString()
     {
-        return $"Transaction: Id: {Id}, From: {From}, To: {To}, Amount: {Amount}, Timestamp: {Timestamp}";
+        return $"Transaction: Id: {Id}, From: {From}, To: {To}, Amount: {Amount}, Signature: {Signature} ,Timestamp: {Timestamp}";
     }
 }
