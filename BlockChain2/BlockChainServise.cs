@@ -9,6 +9,8 @@ public class BlockChainServise
     private MiningService _miningService;
     
     public int Difficulty = 1;
+    private decimal MiningReward = 50L;
+    private int BlockCounter = 0;
 
     private readonly double _targetBlockTimeSeconds = 1;
     private readonly int _difficultyAdjustmentInterval = 1;
@@ -29,7 +31,7 @@ public class BlockChainServise
         Chain.Add(block);
     }
 
-    public void AddBlock(List<Transaction> data)
+    public void MineBlock(string minerAddress, List<Transaction> data)
     {
         foreach (var tx in data)
         {
@@ -40,8 +42,22 @@ public class BlockChainServise
                 return;
             }
         }
+
+        if (BlockCounter == 5)
+        {
+            MiningReward /= 2;
+            BlockCounter = 0;
+        }
+        else
+        {
+            BlockCounter++;
+        }
+        
+        var rewardTransaction = new Transaction("COINBASE",  minerAddress, MiningReward);
+        data.Add(rewardTransaction);
+        
         var lastBlock = Chain.Last();
-        var newBlock = new Block(lastBlock.Index, data, DateTime.UtcNow, lastBlock.PreviousHash);
+        var newBlock = new Block(lastBlock.Index++, data, DateTime.UtcNow, lastBlock.Hash);
         
         _miningService.MineBlock(newBlock, Difficulty);
         Chain.Add(newBlock);
@@ -63,12 +79,12 @@ public class BlockChainServise
             {
                 return;
             }
-            if (_targetBlockTimeSeconds / avarageMiningTime >= 5 && Difficulty < 5)
+           /* if (_targetBlockTimeSeconds / avarageMiningTime >= 5 && Difficulty < 5)
             {
                 Difficulty += 2;
                 Console.WriteLine("Incrementing difficulty + 2");
                 return;
-            }
+            }*/
             Difficulty++;
             Console.WriteLine("Incrementing difficulty");
         } else if (avarageMiningTime > _targetBlockTimeSeconds)
@@ -80,12 +96,12 @@ public class BlockChainServise
             }
             else
             {
-                if (avarageMiningTime >= 5 * _targetBlockTimeSeconds && Difficulty > 2)
+                /*if (avarageMiningTime >= 5 * _targetBlockTimeSeconds && Difficulty > 2)
                 {
                     Difficulty -= 2;
                     Console.WriteLine("Decrementing difficulty - 2");
                     return;
-                }
+                }*/
                 Difficulty--;
                 Console.WriteLine("Decrementing difficulty");
             }

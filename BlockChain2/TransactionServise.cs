@@ -39,7 +39,7 @@ public class TransactionServise
 
     public static void SignTransaction(Transaction transaction, string privateKey)
     {
-        var signature = cryptoServise.SignTransaction(transaction.ToString(),  privateKey);
+        var signature = cryptoServise.SignTransaction(transaction.ToRawString(),  privateKey);
         transaction.Signature = signature;
     }
 }

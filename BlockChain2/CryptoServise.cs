@@ -31,7 +31,7 @@ public class CryptoServise
         {
             rsa.ImportRSAPublicKey(Convert.FromBase64String(publickey), out _);
             var dataBytes = Encoding.UTF8.GetBytes(data);
-            return rsa.VerifyData(dataBytes, signature, HashAlgorithmName.SHA512, RSASignaturePadding.Pkcs1);
+            return rsa.VerifyData(dataBytes, signature, HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);
         }
     }
 }
